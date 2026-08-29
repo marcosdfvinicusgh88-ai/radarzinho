@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moldura de Apoio | Daniel Radar 70.000</title>
+<meta name="description" content="Coloque sua foto na moldura oficial da campanha de Daniel Radar 70.000 e mostre seu apoio nas redes.">
+<link rel="canonical" href="https://sitedanielradar.netlify.app/moldura.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sitedanielradar.netlify.app/moldura.html">
+<meta property="og:site_name" content="Daniel Radar 70.000">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Moldura de Apoio | Daniel Radar 70.000">
+<meta property="og:description" content="Coloque sua foto na moldura oficial da campanha de Daniel Radar 70.000 e mostre seu apoio nas redes.">
+<meta property="og:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Moldura de Apoio | Daniel Radar 70.000">
+<meta name="twitter:description" content="Coloque sua foto na moldura oficial da campanha de Daniel Radar 70.000 e mostre seu apoio nas redes.">
+<meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+
+<meta name="theme-color" content="#0B120E">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/moldura-tool.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Daniel Radar <span class="brand-number">70.000</span>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html#quem-sou">Quem sou</a>
+      <a href="index.html#bandeiras">Bandeiras</a>
+      <a href="index.html#compromissos">Compromissos</a>
+      <a href="index.html#noticias">Notícias</a>
+      <a href="fotos.html">Encontre sua foto</a>
+      <a href="figurinhas.html">Figurinhas</a>
+      <a href="moldura.html">Moldura</a>
+      <div class="nav-cta">
+        <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Moldura de apoio</div>
+      <h1>Eu sou Daniel Radar 70.000</h1>
+      <p>Escolha entre as 3 molduras oficiais, ajuste sua foto dentro do círculo e baixe a imagem pronta para apoiar nossa campanha nas redes sociais. Sua foto é processada só no seu navegador — nada é enviado a um servidor.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="moldura-app" id="molduraApp">
+
+        <div class="ma-banner" id="bannerBoasVindas" role="status">
+          <span id="bannerBoasVindasTexto"></span>
+          <button type="button" class="ma-banner-fechar" id="bannerBoasVindasFechar" aria-label="Fechar aviso">×</button>
+        </div>
+
+        <div class="ma-topbar">
+          <button type="button" class="ma-btn-contraste" id="btnAltoContraste" aria-pressed="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 000 20z" fill="currentColor" stroke="none"/>
+            </svg>
+            Alto contraste
+          </button>
+          <div class="ma-contador" id="contadorEleicao" style="display:none;">
+            <span class="ma-contador-rotulo">Faltam para a eleição</span>
+            <div class="ma-contador-numeros" id="contadorEleicaoNumeros"></div>
+          </div>
+        </div>
+
+        <div class="ma-grid">
+          <section class="palco">
+            <div class="seletor-moldura" id="seletorMoldura">
+              <p class="seletor-moldura-titulo">Escolha sua moldura</p>
+              <div class="seletor-moldura-opcoes" id="seletorMolduraOpcoes"></div>
+            </div>
+
+            <div class="quadro" id="quadro" tabindex="0" role="application" aria-label="Área de prévia da foto, use as setas para mover">
+              <canvas id="canvas" width="1254" height="1254"></canvas>
+              <div class="placeholder-vazio" id="placeholderVazio">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+                </svg>
+                <strong>Sua foto vai aparecer aqui</strong>
+                <span>Toque em "Escolher foto" abaixo para começar</span>
+              </div>
+              <div class="carregando-overlay" id="carregandoOverlay" style="display:none;">
+                <div class="spinner" aria-hidden="true"></div>
+                <span>Carregando foto…</span>
+              </div>
+            </div>
+
+            <div class="controles">
+              <div class="controle-bloco">
+                <div class="controle-cabecalho"><label for="zoom">Zoom</label><span id="zoomValor">1.00x</span></div>
+                <div class="zoom-row">
+                  <button class="btn-icone" id="zoomMenos" type="button" aria-label="Diminuir zoom">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6"/></svg>
+                  </button>
+                  <input type="range" id="zoom" min="100" max="300" value="100">
+                  <button class="btn-icone" id="zoomMais" type="button" aria-label="Aumentar zoom">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="controle-bloco">
+                <div class="controle-cabecalho"><label for="rotacao">Girar</label><span id="rotacaoValor">0°</span></div>
+                <div class="rotacao-row">
+                  <button class="btn-chip" id="girarMenos" type="button">↺ -15°</button>
+                  <button class="btn-chip" id="girarMais" type="button">↻ +15°</button>
+                  <button class="btn-chip" id="btnEspelhar" type="button">⇋ Espelhar</button>
+                  <button class="btn-chip" id="btnCentralizarRosto" type="button" style="display:none;">🙂 Centralizar rosto</button>
+                  <button class="btn-chip" id="btnRestaurar" type="button">⟲ Restaurar</button>
+                </div>
+              </div>
+            </div>
+            <p class="dica" id="dicaArraste">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
+              Depois de enviar a foto, arraste-a com o dedo para reposicionar dentro do círculo
+            </p>
+            <p class="dica dica-teclado" id="dicaTeclado">Dica: com a foto selecionada, use as setas do teclado para mover e <kbd>+</kbd> / <kbd>-</kbd> para o zoom</p>
+          </section>
+
+          <section class="painel">
+            <h2>Sua foto</h2>
+            <p class="descricao">A imagem é processada localmente no seu navegador — nada é enviado para nenhum servidor.</p>
+
+            <div class="upload-box" id="uploadBox">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+              <strong>Arraste sua foto aqui</strong>
+              <span>Suporta arquivos JPG ou PNG</span>
+              <button class="btn-escolher" id="btnEscolher" type="button">Escolher foto</button>
+              <input type="file" id="inputArquivo" accept="image/png, image/jpeg, image/webp">
+            </div>
+
+            <div class="mensagem" id="mensagemFeedback" role="status"></div>
+
+            <div class="campo-nome">
+              <label for="inputNome">Seu nome (opcional)</label>
+              <input type="text" id="inputNome" maxlength="60" placeholder="Aparece na mensagem do WhatsApp">
+            </div>
+
+            <label class="ma-checkbox" for="checkConsentimento">
+              <input type="checkbox" id="checkConsentimento">
+              <span>Autorizo o uso da minha imagem para apoiar esta campanha e li a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</span>
+            </label>
+
+            <div class="ma-acoes">
+              <button class="btn-primario" id="btnBaixar" type="button" disabled>Baixar imagem com moldura</button>
+              <button class="btn-whatsapp" id="btnWhatsapp" type="button">Compartilhar no WhatsApp</button>
+              <button class="btn-secundario" id="btnTrocar" type="button" style="display:none;">Trocar foto</button>
+            </div>
+
+            <p class="contador-downloads" id="contadorDownloads" style="display:none;"></p>
+
+            <div class="cartao-legenda">
+              <p class="cartao-legenda-titulo">Legenda sugerida</p>
+              <p class="cartao-legenda-texto" id="legendaTexto"></p>
+              <button class="btn-secundario" id="btnCopiarLegenda" type="button">Copiar legenda</button>
+            </div>
+
+            <div class="aviso-config" id="avisoConfig" style="display:none;"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="tela-sucesso" id="telaSucesso" style="display:none;">
+  <canvas id="confeteCanvas" class="confete-canvas"></canvas>
+  <div class="tela-sucesso-cartao">
+    <h2>Prontinho! 🎉</h2>
+    <p>Sua imagem foi baixada. Agora é só compartilhar e mostrar seu apoio!</p>
+    <button type="button" class="btn-primario" id="btnFecharSucesso">Continuar</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Daniel Radar <span class="brand-number">70.000</span>
+        </div>
+        <p>Daniel Radar — Deputado Distrital 70.000 | Daqui. De dentro. De verdade.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li>Coordenação Geral: <span id="foneCoord">(61) 99674-2616</span></li>
+          <li>Imprensa: <span id="foneImprensa">(61) 99165-0178</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="fotos.html">Encontre sua foto</a></li>
+          <li><a href="figurinhas.html">Figurinhas</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal" id="footerLegal">ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal.</p>
+  </div>
+</footer>
+
+<script src="data/content.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="data/moldura-config.js"></script>
+<script src="assets/js/moldura-tool.js"></script>
+</body>
+</html>

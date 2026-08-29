@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encontre sua Foto | Daniel Radar 70.000</title>
+<meta name="description" content="Tirou uma foto com o Daniel Radar em algum evento? Encontre o álbum do dia e baixe sua foto em alta resolução, direto do fotógrafo oficial da campanha.">
+<link rel="canonical" href="https://sitedanielradar.netlify.app/fotos.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sitedanielradar.netlify.app/fotos.html">
+<meta property="og:site_name" content="Daniel Radar 70.000">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Encontre sua Foto | Daniel Radar 70.000">
+<meta property="og:description" content="Tirou uma foto com o Daniel Radar em algum evento? Encontre o álbum do dia e baixe sua foto em alta resolução.">
+<meta property="og:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Encontre sua Foto | Daniel Radar 70.000">
+<meta name="twitter:description" content="Tirou uma foto com o Daniel Radar em algum evento? Encontre o álbum do dia e baixe sua foto em alta resolução.">
+<meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+
+<meta name="theme-color" content="#0B120E">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Daniel Radar <span class="brand-number">70.000</span>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html#quem-sou">Quem sou</a>
+      <a href="index.html#bandeiras">Bandeiras</a>
+      <a href="index.html#compromissos">Compromissos</a>
+      <a href="index.html#noticias">Notícias</a>
+      <a href="fotos.html">Encontre sua foto</a>
+      <a href="figurinhas.html">Figurinhas</a>
+      <a href="moldura.html">Moldura</a>
+      <div class="nav-cta">
+        <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Encontre sua foto</div>
+      <h1>Tirou uma foto com o Daniel?</h1>
+      <p>O fotógrafo oficial da campanha registra as caminhadas, agendas e eventos. Encontre o álbum do dia em que você esteve e baixe sua foto em alta resolução, de graça.</p>
+    </div>
+  </section>
+
+  <!-- LISTA DE ÁLBUNS -->
+  <section class="section section--tight album-list" id="albumList">
+    <div class="container">
+      <div class="album-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="albumSearch" placeholder="Buscar por evento, data ou cidade…">
+      </div>
+
+      <div class="gallery-toolbar">
+        <span class="count" id="albumCount">carregando…</span>
+      </div>
+
+      <div id="albumGrid" class="album-grid"></div>
+    </div>
+  </section>
+
+  <!-- ÁLBUM ABERTO -->
+  <section class="section section--tight album-detail" id="albumDetail">
+    <div class="container">
+      <button type="button" class="album-back" id="albumBackBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        Voltar para todos os álbuns
+      </button>
+
+      <div class="album-detail-head">
+        <h2 id="albumDetailTitle">—</h2>
+        <div class="album-meta" id="albumDetailMeta"></div>
+      </div>
+
+      <div id="photoGrid" class="photo-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Daniel Radar <span class="brand-number">70.000</span>
+        </div>
+        <p>Uma campanha de verdade para a Câmara Legislativa do Distrito Federal.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li>Coordenação Geral: <span id="foneCoord">(61) 99674-2616</span></li>
+          <li>Imprensa: <span id="foneImprensa">(61) 99165-0178</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="figurinhas.html">Figurinhas</a></li>
+          <li><a href="moldura.html">Moldura de apoio</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal" id="footerLegal">ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal.</p>
+  </div>
+</footer>
+
+<script src="data/content.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script>
+  function esc(str) {
+    return String(str ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  const albumListSection = document.getElementById('albumList');
+  const albumDetailSection = document.getElementById('albumDetail');
+  const albumGrid = document.getElementById('albumGrid');
+  const albumCount = document.getElementById('albumCount');
+  const albumSearch = document.getElementById('albumSearch');
+  const photoGrid = document.getElementById('photoGrid');
+  const albumDetailTitle = document.getElementById('albumDetailTitle');
+  const albumDetailMeta = document.getElementById('albumDetailMeta');
+  const albumBackBtn = document.getElementById('albumBackBtn');
+
+  let albuns = [];
+
+  function renderAlbumCard(a) {
+    const capa = a.capa || (a.fotos && a.fotos[0] && a.fotos[0].src) || 'assets/img/placeholder-hero.svg';
+    return `
+      <a class="album-card" href="#album/${esc(a.id)}" data-id="${esc(a.id)}">
+        <div class="album-cover">
+          <img src="${esc(capa)}" alt="${esc(a.titulo)}" loading="lazy" decoding="async">
+          <span class="album-count">${(a.fotos || []).length} fotos</span>
+        </div>
+        <div class="album-info">
+          <h3>${esc(a.titulo)}</h3>
+          <div class="album-meta">
+            ${a.data ? `<span>${esc(a.data)}</span>` : ''}
+            ${a.local ? `<span>${esc(a.local)}</span>` : ''}
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function renderAlbumList(lista) {
+    albumCount.textContent = lista.length + (lista.length === 1 ? ' álbum encontrado' : ' álbuns encontrados');
+    if (!lista.length) {
+      albumGrid.innerHTML = `
+        <div class="gallery-empty" style="grid-column:1/-1">
+          ${albuns.length ? 'Nenhum álbum encontrado com esse termo de busca.' : `Os álbuns de fotos ainda serão publicados aqui após os próximos eventos.<br>
+          Acompanhe o <a href="https://www.instagram.com/danielradardf/" target="_blank" rel="noopener" style="text-decoration:underline">Instagram da campanha</a> para saber quando novas fotos estiverem disponíveis.`}
+        </div>`;
+      return;
+    }
+    albumGrid.innerHTML = lista.map(renderAlbumCard).join('');
+  }
+
+  function filtrarAlbuns(termo) {
+    const t = termo.trim().toLowerCase();
+    if (!t) return albuns;
+    return albuns.filter((a) => [a.titulo, a.local, a.data].filter(Boolean).join(' ').toLowerCase().includes(t));
+  }
+
+  function abrirAlbum(id) {
+    const album = albuns.find((a) => a.id === id);
+    if (!album) { fecharAlbum(); return; }
+    albumListSection.classList.add('is-hidden');
+    albumDetailSection.classList.add('is-open');
+    albumDetailTitle.textContent = album.titulo;
+    albumDetailMeta.innerHTML = [
+      album.data ? `<span>${esc(album.data)}</span>` : '',
+      album.local ? `<span>${esc(album.local)}</span>` : '',
+      `<span>${(album.fotos || []).length} fotos</span>`
+    ].join('');
+
+    const fotos = album.fotos || [];
+    photoGrid.innerHTML = fotos.map((f) => `
+      <div class="photo-card">
+        <img src="${esc(f.src)}" alt="${esc(f.legenda || album.titulo)}" data-full="${esc(f.src)}" data-caption="${esc(f.legenda || '')}" loading="lazy" decoding="async">
+        <a class="photo-download" href="${esc(f.src)}" download aria-label="Baixar foto" onclick="if(typeof radarTrackEvent==='function')radarTrackEvent('foto_baixada',{})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        </a>
+      </div>
+    `).join('');
+    initLightbox('#photoGrid', 'img');
+    window.scrollTo({ top: albumDetailSection.offsetTop - 90, behavior: 'smooth' });
+  }
+
+  function fecharAlbum() {
+    albumDetailSection.classList.remove('is-open');
+    albumListSection.classList.remove('is-hidden');
+    history.replaceState(null, '', location.pathname);
+  }
+
+  albumBackBtn.addEventListener('click', fecharAlbum);
+  albumSearch.addEventListener('input', () => renderAlbumList(filtrarAlbuns(albumSearch.value)));
+
+  window.addEventListener('hashchange', () => {
+    const m = location.hash.match(/^#album\/(.+)$/);
+    if (m) abrirAlbum(decodeURIComponent(m[1])); else fecharAlbum();
+  });
+
+  document.addEventListener('radar:content-ready', (e) => {
+    albuns = e.detail.albunsFotos || [];
+    renderAlbumList(albuns);
+    const m = location.hash.match(/^#album\/(.+)$/);
+    if (m) abrirAlbum(decodeURIComponent(m[1]));
+  });
+</script>
+</body>
+</html>
