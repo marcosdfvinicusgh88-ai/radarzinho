@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#EEE9DA"/>
+  <circle cx="200" cy="190" r="80" fill="#D8D2BC"/>
+  <path d="M70 480c0-80 60-145 130-145s130 65 130 145z" fill="#D8D2BC"/>
+  <text x="200" y="460" text-anchor="middle" font-family="monospace" font-size="13" fill="#8A8470">FOTO — substituir pelo painel admin</text>
+</svg>

@@ -1,0 +1,14 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Backend opcional (/server) — só é necessário se vocês publicarem um
+# backend próprio à parte; o site em si (Netlify) não usa nada disso.
+server/node_modules/
+server/.env
+server/data/*.json
+!server/data/.gitkeep
+
+# Editor
+.vscode/
+.idea/

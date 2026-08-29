@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imprensa | Daniel Radar 70.000</title>
+<meta name="description" content="Kit de imprensa, cobertura jornalística e contato direto com a assessoria da campanha de Daniel Radar 70.000.">
+<link rel="canonical" href="https://sitedanielradar.netlify.app/imprensa.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sitedanielradar.netlify.app/imprensa.html">
+<meta property="og:site_name" content="Daniel Radar 70.000">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Imprensa | Daniel Radar 70.000">
+<meta property="og:description" content="Kit de imprensa, cobertura jornalística e contato direto com a assessoria da campanha 70.000.">
+<meta property="og:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imprensa | Daniel Radar 70.000">
+<meta name="twitter:description" content="Kit de imprensa, cobertura jornalística e contato direto com a assessoria da campanha 70.000.">
+<meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+
+<meta name="theme-color" content="#0B120E">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Daniel Radar <span class="brand-number">70.000</span>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html#quem-sou">Quem sou</a>
+      <a href="index.html#bandeiras">Bandeiras</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="imprensa.html" class="is-active">Imprensa</a>
+      <a href="fotos.html">Encontre sua foto</a>
+      <a href="figurinhas.html">Figurinhas</a>
+      <a href="moldura.html">Moldura</a>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="doacoes.html">Apoie a campanha</a>
+        <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Sala de imprensa</span>
+      <h1 class="page-hero-title reveal">Imprensa</h1>
+      <p class="page-hero-sub reveal">Material de apoio, ficha técnica e cobertura jornalística sobre a candidatura de Daniel Radar (70.000) ao Distrito Federal.</p>
+    </div>
+  </section>
+
+  <!-- KIT DE IMPRENSA -->
+  <section class="section section--tight">
+    <div class="container">
+      <span class="eyebrow">Para jornalistas e veículos</span>
+      <h2 class="section-title reveal">Kit de imprensa</h2>
+
+      <div class="press-kit-grid">
+        <div class="press-kit-card reveal">
+          <h3>Fotos e biografia oficiais</h3>
+          <p id="bioResumo">Bio resumida do candidato, ficha técnica e fotos em alta resolução liberadas para uso jornalístico.</p>
+          <a class="btn btn-primary" href="downloads/kit-imprensa-daniel-radar-70000.zip" download onclick="if(typeof radarTrackEvent==='function')radarTrackEvent('propostas_baixadas',{tipo:'kit_imprensa'})">Baixar kit de imprensa (.zip)</a>
+        </div>
+        <div class="press-kit-card reveal">
+          <h3>Ficha técnica</h3>
+          <dl class="press-ficha" id="pressFicha"></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section class="section section--tight">
+    <div class="container">
+      <span class="eyebrow">Na mídia</span>
+      <h2 class="section-title reveal">Cobertura jornalística</h2>
+      <div id="newsGridFull" class="news-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTATO IMPRENSA -->
+  <section class="section section--dark on-dark section--tight">
+    <div class="container">
+      <div class="cta-band reveal" style="grid-template-columns:1fr;">
+        <div>
+          <span class="eyebrow" style="color:var(--signal)">Fale com a assessoria</span>
+          <h2>Precisa de uma entrevista, dado ou posicionamento?</h2>
+          <p>Nossa assessoria de imprensa responde rapidamente por WhatsApp e e-mail.</p>
+          <a class="btn btn-primary" id="pressWhatsapp" href="#" target="_blank" rel="noopener">Falar com a assessoria (WhatsApp)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Daniel Radar <span class="brand-number">70.000</span>
+        </div>
+        <p>Uma campanha de verdade para a Câmara Legislativa do Distrito Federal.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html#quem-sou">Quem sou</a></li>
+          <li><a href="agenda.html">Agenda</a></li>
+          <li><a href="doacoes.html">Doações</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato &amp; Transparência</h5>
+        <ul>
+          <li>Imprensa: <span id="foneImprensa">(61) 99165-0178</span></li>
+          <li>CNPJ: <span id="cnpj">68.504.295/0001-77</span></li>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal" id="footerLegal">LEI ELEITORAL DE TRANSPARÊNCIA OBRIGATÓRIA — ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal • Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="data/content.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/api.js"></script>
+<script>
+  function escImp(str) {
+    return String(str ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  document.addEventListener('radar:content-ready', (e) => {
+    const content = e.detail || {};
+    const kit = content.kitImprensa || {};
+    const candidato = content.candidato || {};
+
+    const bio = document.getElementById('bioResumo');
+    if (bio && kit.bioResumo) bio.textContent = kit.bioResumo;
+
+    const ficha = document.getElementById('pressFicha');
+    if (ficha && Array.isArray(kit.fichaTecnica)) {
+      ficha.innerHTML = kit.fichaTecnica.map((item) => `
+        <dt>${escImp(item.label)}</dt><dd>${escImp(item.valor)}</dd>
+      `).join('');
+    }
+
+    const grid = document.getElementById('newsGridFull');
+    const noticias = content.noticias || [];
+    if (grid) {
+      grid.innerHTML = noticias.map((n) => `
+        <a class="news-card reveal" href="${escImp(n.url)}" target="_blank" rel="noopener">
+          <div class="news-card-thumb" aria-hidden="true"></div>
+          <div class="news-card-meta">
+            <span class="news-source">${escImp(n.fonte)}</span>
+            <span class="news-date">${escImp(n.data)}</span>
+          </div>
+          <h3>${escImp(n.titulo)}</h3>
+          <p>${escImp(n.resumo)}</p>
+          <span class="news-link">Ler matéria completa
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+          </span>
+        </a>
+      `).join('');
+      if (typeof setupReveal === 'function') setupReveal();
+    }
+
+    const pressWpp = document.getElementById('pressWhatsapp');
+    if (pressWpp) {
+      const numero = (content.contato && content.contato.imprensa || '').replace(/\D/g, '');
+      pressWpp.href = numero ? `https://wa.me/55${numero}?text=${encodeURIComponent('Olá! Sou jornalista e gostaria de falar com a assessoria da campanha Daniel Radar 70.000.')}` : (content.links && content.links.grupoVoluntariosWhatsapp) || '#';
+    }
+  });
+</script>
+</body>
+</html>

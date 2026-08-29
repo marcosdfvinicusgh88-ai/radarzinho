@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda de Eventos | Daniel Radar 70.000</title>
+<meta name="description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha de Daniel Radar 70.000 pelo Distrito Federal.">
+<link rel="canonical" href="https://sitedanielradar.netlify.app/agenda.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sitedanielradar.netlify.app/agenda.html">
+<meta property="og:site_name" content="Daniel Radar 70.000">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Agenda de Eventos | Daniel Radar 70.000">
+<meta property="og:description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha 70.000 pelo Distrito Federal.">
+<meta property="og:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agenda de Eventos | Daniel Radar 70.000">
+<meta name="twitter:description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha 70.000 pelo Distrito Federal.">
+<meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+
+<meta name="theme-color" content="#0B120E">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="shortcut icon" href="assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Daniel Radar <span class="brand-number">70.000</span>
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="index.html#quem-sou">Quem sou</a>
+      <a href="index.html#bandeiras">Bandeiras</a>
+      <a href="agenda.html" class="is-active">Agenda</a>
+      <a href="imprensa.html">Imprensa</a>
+      <a href="fotos.html">Encontre sua foto</a>
+      <a href="figurinhas.html">Figurinhas</a>
+      <a href="moldura.html">Moldura</a>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="doacoes.html">Apoie a campanha</a>
+        <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Onde estaremos</span>
+      <h1 class="page-hero-title reveal">Agenda de eventos</h1>
+      <p class="page-hero-sub reveal">Caminhadas, carreatas e encontros abertos ao público em todo o Distrito Federal. Apareça — a campanha é feita na rua, com você.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="agenda-tabs" role="tablist" aria-label="Filtrar eventos">
+        <button class="agenda-tab is-active" data-filter="proximo" type="button">Próximos eventos</button>
+        <button class="agenda-tab" data-filter="realizado" type="button">Já realizados</button>
+      </div>
+
+      <div id="agendaList" class="agenda-list"></div>
+    </div>
+  </section>
+
+  <section class="section section--dark on-dark section--tight">
+    <div class="container">
+      <div class="cta-band reveal" style="grid-template-columns:1fr;">
+        <div>
+          <span class="eyebrow" style="color:var(--signal)">Não perca nenhum evento</span>
+          <h2>Entre no grupo de voluntários para receber a agenda em primeira mão</h2>
+          <p>Avisamos com antecedência sobre caminhadas, carreatas e encontros na sua região.</p>
+          <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Entrar no grupo do WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Daniel Radar <span class="brand-number">70.000</span>
+        </div>
+        <p>Uma campanha de verdade para a Câmara Legislativa do Distrito Federal.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html#quem-sou">Quem sou</a></li>
+          <li><a href="index.html#bandeiras">Bandeiras</a></li>
+          <li><a href="imprensa.html">Imprensa</a></li>
+          <li><a href="doacoes.html">Doações</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contato &amp; Transparência</h5>
+        <ul>
+          <li>Coordenação Geral: <span id="foneCoord">(61) 99674-2616</span></li>
+          <li>CNPJ: <span id="cnpj">68.504.295/0001-77</span></li>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal" id="footerLegal">LEI ELEITORAL DE TRANSPARÊNCIA OBRIGATÓRIA — ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal • Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="data/content.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/api.js"></script>
+<script>
+  function escAgenda(str) {
+    return String(str ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  document.addEventListener('radar:content-ready', (e) => {
+    const eventos = (e.detail && e.detail.agenda) || [];
+    const list = document.getElementById('agendaList');
+    const tabs = document.querySelectorAll('.agenda-tab');
+    if (!list) return;
+
+    function render(filtro) {
+      const filtrados = eventos.filter((ev) => ev.status === filtro);
+      if (!filtrados.length) {
+        list.innerHTML = `<p class="empty-state">Nenhum evento ${filtro === 'proximo' ? 'agendado no momento' : 'registrado ainda'}.</p>`;
+        return;
+      }
+      list.innerHTML = filtrados.map((ev) => `
+        <article class="agenda-card reveal">
+          <div class="agenda-card-date">
+            <span class="agenda-card-day">${escAgenda((ev.data || '').split(' de ')[0])}</span>
+            <span class="agenda-card-month">${escAgenda((ev.data || '').split(' de ')[1] || '')}</span>
+          </div>
+          <div class="agenda-card-body">
+            <h3>${escAgenda(ev.titulo)}</h3>
+            <p class="agenda-card-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+              ${escAgenda(ev.horario)}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15" style="margin-left:14px"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              ${escAgenda(ev.local)}
+            </p>
+            <p class="agenda-card-desc">${escAgenda(ev.descricao)}</p>
+            ${ev.mapaUrl ? `<a class="btn btn-outline on-light" href="${escAgenda(ev.mapaUrl)}" target="_blank" rel="noopener">Ver no mapa</a>` : ''}
+          </div>
+        </article>
+      `).join('');
+      if (typeof setupReveal === 'function') setupReveal();
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        render(tab.getAttribute('data-filter'));
+      });
+    });
+
+    render('proximo');
+  });
+</script>
+</body>
+</html>

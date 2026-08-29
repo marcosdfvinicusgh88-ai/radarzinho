@@ -63,11 +63,12 @@
       <a href="#quem-sou">Quem sou</a>
       <a href="#bandeiras">Bandeiras</a>
       <a href="#compromissos">Compromissos</a>
-      <a href="#noticias">Notícias</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="imprensa.html">Imprensa</a>
       <a href="#novidades">Participe</a>
-      <a href="#contato">Contato</a>
+      <a href="#contato-form">Contato</a>
       <div class="nav-cta">
-        <a class="btn btn-outline" data-download="propostasPdf" href="#">Baixar propostas</a>
+        <a class="btn btn-outline" href="doacoes.html">Apoie a campanha</a>
         <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
       </div>
     </nav>
@@ -313,7 +314,8 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
           <p>Entre no grupo de voluntários no WhatsApp ou deixe seus dados que a coordenação entra em contato.</p>
           <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Entrar no grupo de voluntários</a>
         </div>
-        <form class="mini-form" id="formVoluntario" novalidate>
+        <form class="mini-form" id="formVoluntario" name="voluntario" method="POST" data-netlify="true" netlify-honeypot="website" novalidate>
+          <input type="hidden" name="form-name" value="voluntario">
           <h3>Quero ser voluntário(a)</h3>
           <div class="mini-form-row">
             <label class="visually-hidden" for="volNome">Nome</label>
@@ -330,7 +332,7 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
             </div>
           </div>
           <!-- honeypot anti-spam: campo invisível, humano não preenche -->
-          <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off">
+          <p class="visually-hidden"><label>Não preencha isto: <input name="website" tabindex="-1" autocomplete="off"></label></p>
           <button type="submit" class="btn btn-outline btn-block">Quero ajudar</button>
           <p class="mini-form-status" id="volStatus" role="status" aria-live="polite"></p>
         </form>
@@ -345,7 +347,8 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
       <h2 class="section-title reveal">Fale com a gente</h2>
       <p class="section-lede">Dúvidas, sugestões ou imprensa: preencha o formulário abaixo e respondemos o quanto antes.</p>
 
-      <form class="contact-form reveal" id="formContato" novalidate>
+      <form class="contact-form reveal" id="formContato" name="contato" method="POST" data-netlify="true" netlify-honeypot="website" novalidate>
+        <input type="hidden" name="form-name" value="contato">
         <div class="contact-form-row contact-form-row--split">
           <div>
             <label for="ctNome">Nome</label>
@@ -364,7 +367,7 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
           <label for="ctMensagem">Mensagem</label>
           <textarea id="ctMensagem" name="mensagem" rows="4" required maxlength="2000"></textarea>
         </div>
-        <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off">
+        <p class="visually-hidden"><label>Não preencha isto: <input name="website" tabindex="-1" autocomplete="off"></label></p>
         <button type="submit" class="btn btn-solid-ink">Enviar mensagem</button>
         <p class="mini-form-status" id="ctStatus" role="status" aria-live="polite"></p>
       </form>
@@ -394,7 +397,8 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
           <li><a href="#quem-sou">Quem sou</a></li>
           <li><a href="#bandeiras">Bandeiras</a></li>
           <li><a href="#compromissos">Compromissos</a></li>
-          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="agenda.html">Agenda de eventos</a></li>
+          <li><a href="imprensa.html">Imprensa</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -403,6 +407,7 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
           <li><a href="fotos.html">Encontre sua foto</a></li>
           <li><a href="figurinhas.html">Figurinhas</a></li>
           <li><a href="moldura.html">Moldura de apoio</a></li>
+          <li><a href="doacoes.html">Faça uma doação</a></li>
           <li><a data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a></li>
         </ul>
       </div>
