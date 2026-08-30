@@ -44,9 +44,18 @@
       <a href="index.html#bandeiras">Bandeiras</a>
       <a href="agenda.html">Agenda</a>
       <a href="imprensa.html" class="is-active">Imprensa</a>
-      <a href="fotos.html">Encontre sua foto</a>
-      <a href="figurinhas.html">Figurinhas</a>
-      <a href="moldura.html">Moldura</a>
+      <div class="nav-dropdown" id="navParticipe">
+        <button type="button" aria-expanded="false" aria-haspopup="true">
+          Participe
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="fotos.html">Encontre sua foto</a>
+          <a href="figurinhas.html">Figurinhas</a>
+          <a href="moldura.html">Moldura de apoio</a>
+          <a href="index.html#contato-form">Fale com a gente</a>
+        </div>
+      </div>
       <div class="nav-cta">
         <a class="btn btn-outline" href="doacoes.html">Apoie a campanha</a>
         <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Seja voluntário</a>
@@ -169,7 +178,9 @@
     if (grid) {
       grid.innerHTML = noticias.map((n) => `
         <a class="news-card reveal" href="${escImp(n.url)}" target="_blank" rel="noopener">
-          <div class="news-card-thumb" aria-hidden="true"></div>
+          <div class="news-card-thumb" aria-hidden="true">
+            ${n.imagem ? `<img src="${escImp(n.imagem)}" alt="" loading="lazy" decoding="async">` : ''}
+          </div>
           <div class="news-card-meta">
             <span class="news-source">${escImp(n.fonte)}</span>
             <span class="news-date">${escImp(n.data)}</span>

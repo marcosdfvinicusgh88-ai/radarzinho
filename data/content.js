@@ -140,21 +140,24 @@ window.RADAR_CONTENT = {
       data: "1 de agosto de 2026",
       titulo: "Candidatura oficializada em convenção com mais de 14 mil participantes",
       resumo: "A convenção do Avante confirmou a candidatura de Daniel Radar a deputado distrital e homologou também a candidatura de José Roberto Arruda ao governo do DF. Radar destacou os mais de 15 anos de atuação comunitária que embasam seu projeto político.",
-      url: "https://www.satelitenoticias.com.br/2026/08/eleicoes-df-2026-daniel-radar-tem.html"
+      url: "https://www.satelitenoticias.com.br/2026/08/eleicoes-df-2026-daniel-radar-tem.html",
+      imagem: "assets/img/fotos/convencao-bastidores-2026/07-daniel-radar-arruda.png"
     },
     {
       fonte: "O TEMPO — Eleições 2026",
       data: "Atualizado em 21 de agosto de 2026",
       titulo: "Perfil oficial do candidato: dados do TSE, biografia e propostas",
       resumo: "Levantamento com dados oficiais do TSE traz a ficha completa da candidatura de Daniel Radar (Avante, 70.000): naturalidade, escolaridade, ocupação e situação da candidatura no Distrito Federal.",
-      url: "https://www.otempo.com.br/eleicoes/2026/candidatos/distrito-federal/deputado-distrital/daniel-radar-70000"
+      url: "https://www.otempo.com.br/eleicoes/2026/candidatos/distrito-federal/deputado-distrital/daniel-radar-70000",
+      imagem: "assets/img/perfil/daniel-radar-retrato.png"
     },
     {
       fonte: "Brasília Notícias",
       data: "Entrevista de trajetória",
       titulo: "Quem é Daniel Radar: a origem do projeto Radar Santa Maria",
       resumo: "Entrevista que reconstitui o início do projeto Radar Santa Maria em 2011 e a motivação de Daniel Radar para fiscalizar os serviços públicos e levar essa luta à Câmara Legislativa.",
-      url: "https://brasilianoticias.com.br/sem-categoria/quem-e-daniel-radar/"
+      url: "https://brasilianoticias.com.br/sem-categoria/quem-e-daniel-radar/",
+      imagem: "assets/img/perfil/daniel-radar-punho.png"
     }
   ],
 

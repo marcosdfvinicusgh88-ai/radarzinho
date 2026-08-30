@@ -57,7 +57,12 @@ function renderSignalLog(content) {
   const log = document.getElementById('signalLog');
   if (!log) return;
   const items = content.compromissos || [];
-  log.innerHTML = items.map((c) => `
+  const LIMITE_INICIAL = 10;
+  const iniciais = items.slice(0, LIMITE_INICIAL);
+  const restantes = items.slice(LIMITE_INICIAL);
+
+  function linha(c) {
+    return `
     <details class="signal-row reveal">
       <summary>
         <span class="idx">${esc(String(c.numero).padStart(2, '0'))}</span>
@@ -66,8 +71,26 @@ function renderSignalLog(content) {
         <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </summary>
       <div class="body">${esc(c.texto)}</div>
-    </details>
-  `).join('');
+    </details>`;
+  }
+
+  log.innerHTML = iniciais.map(linha).join('');
+
+  const oldBtn = document.getElementById('signalLogMore');
+  if (oldBtn) oldBtn.remove();
+
+  if (restantes.length) {
+    const wrap = document.createElement('div');
+    wrap.className = 'signal-log-more';
+    wrap.id = 'signalLogMore';
+    wrap.innerHTML = `<button type="button" class="btn btn-outline on-light">Ver todos os ${items.length} compromissos</button>`;
+    log.insertAdjacentElement('afterend', wrap);
+    wrap.querySelector('button').addEventListener('click', () => {
+      log.insertAdjacentHTML('beforeend', restantes.map(linha).join(''));
+      wrap.remove();
+      if (typeof setupReveal === 'function') setupReveal();
+    });
+  }
 }
 
 function renderNoticias(content) {
@@ -77,7 +100,9 @@ function renderNoticias(content) {
   if (!items.length) { grid.innerHTML = ''; return; }
   grid.innerHTML = items.map((n) => `
     <a class="news-card reveal" href="${esc(n.url)}" target="_blank" rel="noopener">
-      <div class="news-card-thumb" aria-hidden="true"></div>
+      <div class="news-card-thumb" aria-hidden="true">
+        ${n.imagem ? `<img src="${esc(n.imagem)}" alt="" loading="lazy" decoding="async">` : ''}
+      </div>
       <div class="news-card-meta">
         <span class="news-source">${esc(n.fonte)}</span>
         <span class="news-date">${esc(n.data)}</span>
@@ -378,6 +403,33 @@ function setupBallotCountUp() {
   });
 }
 
+function setupNavDropdown() {
+  const dropdown = document.getElementById('navParticipe');
+  if (!dropdown) return;
+  const btn = dropdown.querySelector('button');
+  if (!btn) return;
+
+  function close() {
+    dropdown.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  function toggle() {
+    const open = dropdown.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggle();
+  });
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+}
+
 function setupReveal() {
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;
@@ -463,6 +515,7 @@ function applyVisibility(content) {
 
 function init() {
   setupNav();
+  setupNavDropdown();
   setupHeaderScroll();
   setupHeaderProgressiveOpacity();
   setupHeroParallax();

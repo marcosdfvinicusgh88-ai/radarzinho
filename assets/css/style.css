@@ -164,49 +164,86 @@ h2.section-title{
 }
 .site-header .container{
   display:flex; align-items:center; justify-content:space-between;
-  height: 76px;
+  height: 72px;
+  gap: 20px;
 }
 .brand{
-  display:flex; align-items:center; gap:12px;
+  display:flex; align-items:center; gap:10px;
   color: var(--white);
   font-family: var(--f-display);
   font-weight:600;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: -.01em;
+  flex: none;
+  white-space: nowrap;
 }
 .brand-mark{
-  width:34px; height:34px; border-radius:50%;
+  width:30px; height:30px; border-radius:50%;
   border: 1.5px solid var(--signal);
   position:relative;
   flex:none;
 }
 .brand-mark::before{
   content:'';
-  position:absolute; inset:8px;
+  position:absolute; inset:7px;
   border-radius:50%; border:1px solid rgba(255,255,255,.5);
 }
 .brand-mark::after{
   content:'';
-  position:absolute; inset:0; margin:auto; width:5px; height:5px;
+  position:absolute; inset:0; margin:auto; width:4px; height:4px;
   border-radius:50%; background: var(--signal);
 }
 .brand-number{ color: var(--signal); font-family: var(--f-mono); }
 
-.nav{ display:flex; align-items:center; gap: 28px; }
+.nav{ display:flex; align-items:center; gap: 22px; flex-wrap: nowrap; }
 .nav a{
-  font-size: 14px; font-weight:500; color: var(--on-ink-70);
+  font-size: 13.5px; font-weight:500; color: var(--on-ink-70);
   transition: color .2s;
   position:relative;
+  white-space: nowrap;
 }
 .nav a:hover{ color: var(--white); }
-.nav-cta{ display:flex; align-items:center; gap:14px; }
+.nav-cta{ display:flex; align-items:center; gap:10px; flex:none; }
 .nav-toggle{
   display:none; background:none; border:none; color:var(--white);
   width: 40px; height:40px; align-items:center; justify-content:center;
 }
 .nav-toggle svg{ width:22px; height:22px; }
 
-@media (max-width: 900px){
+/* dropdown "Participe" — evita lotar a barra de navegação com Fotos/
+   Figurinhas/Moldura como itens soltos; some no menu mobile (vira lista simples) */
+.nav-dropdown{ position:relative; }
+.nav-dropdown > button{
+  font: inherit; background:none; border:none; cursor:pointer;
+  display:flex; align-items:center; gap:5px;
+  font-size: 13.5px; font-weight:500; color: var(--on-ink-70);
+  padding:0; white-space:nowrap;
+}
+.nav-dropdown > button:hover{ color: var(--white); }
+.nav-dropdown.is-open > button{ color: var(--white); }
+.nav-dropdown--active > button{ color: var(--white); }
+.nav-dropdown svg{ width:13px; height:13px; transition: transform .2s var(--ease); }
+.nav-dropdown.is-open svg{ transform: rotate(180deg); }
+.nav-dropdown-menu{
+  position:absolute; top: calc(100% + 16px); left:50%; transform: translateX(-50%);
+  background: var(--ink-soft); border:1px solid rgba(255,255,255,.14); border-radius: var(--radius-m);
+  padding:8px; min-width:200px;
+  opacity:0; visibility:hidden; transform: translateX(-50%) translateY(4px);
+  transition: opacity .18s var(--ease), transform .18s var(--ease), visibility .18s;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+.nav-dropdown.is-open .nav-dropdown-menu{ opacity:1; visibility:visible; transform: translateX(-50%) translateY(0); }
+.nav-dropdown-menu a{
+  display:block; padding:9px 12px; border-radius: var(--radius-s); font-size:14px; color: var(--on-ink-70);
+  white-space:nowrap;
+}
+.nav-dropdown-menu a:hover{ background: rgba(255,255,255,.06); color: var(--white); }
+
+@media (max-width: 1180px){
+  .nav{ gap:16px; }
+}
+
+@media (max-width: 1180px){
   /* Correção de bug: backdrop-filter no header faz o Safari/iOS tratar o
      header como "container" de elementos position:fixed, confinando o menu
      mobile dentro da faixa do cabeçalho em vez de cobrir a tela toda — por
@@ -219,17 +256,27 @@ h2.section-title{
     background: var(--ink);
     flex-direction: column; align-items: flex-start;
     padding: 96px 24px 32px;
-    gap: 20px;
+    gap: 4px;
     transform: translateX(100%);
     transition: transform .35s var(--ease);
     overflow-y: auto;
     z-index: 90;
   }
   .nav.is-open{ transform: translateX(0); }
-  .nav a{ font-size: 20px; width:100%; }
-  .nav-cta{ flex-direction:column; align-items:flex-start; width:100%; margin-top:10px; gap:12px; }
+  .nav a{ font-size: 19px; width:100%; padding: 10px 0; }
+  .nav-cta{ flex-direction:column; align-items:flex-start; width:100%; margin-top:16px; gap:12px; }
   .nav-cta .btn{ width:100%; }
   .nav-toggle{ display:flex; position:relative; z-index:95; }
+
+  /* no mobile o dropdown vira uma lista simples e sempre aberta, dentro do menu cheio */
+  .nav-dropdown{ width:100%; }
+  .nav-dropdown > button{ display:none; }
+  .nav-dropdown-menu{
+    position:static; transform:none; opacity:1; visibility:visible;
+    background:none; border:none; box-shadow:none; padding:0 0 4px;
+    min-width:0; display:flex; flex-direction:column; gap:2px;
+  }
+  .nav-dropdown-menu a{ font-size:19px; padding:10px 0 10px 14px; border-left: 1px solid rgba(255,255,255,.18); border-radius:0; }
 }
 
 /* ============ hero ============ */
@@ -456,7 +503,7 @@ h2.section-title{
 
 /* ============ compromissos: log de sinais ============ */
 .signal-log{
-  margin-top: 34px;
+  margin-top: 24px;
   border-top: 1px solid rgba(10,10,10,.1);
 }
 .signal-row{
@@ -464,44 +511,47 @@ h2.section-title{
 }
 .signal-row summary{
   list-style:none;
-  display:flex; align-items:center; gap: 20px;
-  padding: 20px 4px;
+  display:flex; align-items:center; gap: 16px;
+  padding: 13px 4px;
   cursor:pointer;
 }
 .signal-row summary::-webkit-details-marker{ display:none; }
 .signal-row .idx{
   font-family: var(--f-mono);
-  font-size: 13px; color: var(--green-mid);
-  width: 42px; flex:none;
+  font-size: 12px; color: var(--green-mid);
+  width: 34px; flex:none;
 }
 .signal-row .tag{
   font-family: var(--f-mono);
-  font-size: 11px; text-transform:uppercase; letter-spacing:.06em;
+  font-size: 10.5px; text-transform:uppercase; letter-spacing:.06em;
   color: var(--ink-45);
   border: 1px solid rgba(10,10,10,.15);
-  padding: 4px 10px; border-radius:999px;
+  padding: 3px 9px; border-radius:999px;
   flex:none;
   display:none;
 }
 .signal-row h4{
   font-family: var(--f-display);
   font-weight:600;
-  font-size: 17px;
+  font-size: 15.5px;
   flex:1;
 }
 .signal-row .chev{
-  flex:none; width:20px; height:20px; color: var(--ink-45);
+  flex:none; width:18px; height:18px; color: var(--ink-45);
   transition: transform .25s var(--ease);
 }
 .signal-row[open] .chev{ transform: rotate(180deg); }
 .signal-row .body{
-  padding: 0 4px 22px 62px;
+  padding: 0 4px 16px 50px;
   color: var(--ink-70);
-  font-size: 15.5px;
+  font-size: 14.5px;
   max-width: 62ch;
 }
 @media (min-width: 640px){
   .signal-row .tag{ display:inline-block; }
+}
+.signal-log-more{
+  display:flex; justify-content:center; margin-top: 22px;
 }
 
 .log-cta{
@@ -1164,11 +1214,7 @@ h2.section-title{ font-weight: 650; }
 
 /* 20) ícone acima de cada número de estatística */
 .stat-card{ position:relative; }
-.stat-icon{
-  width:26px; height:26px; margin:0 auto 10px;
-  color: var(--green-mid); opacity:.8;
-}
-.stat-icon svg{ width:100%; height:100%; }
+/* ícones de estatística removidos a pedido — visual mais limpo */
 
 /* 21) brilho radial nos cards de estatística ao aparecerem */
 .stat-card.reveal.is-visible{
@@ -1177,15 +1223,22 @@ h2.section-title{ font-weight: 650; }
 
 /* 22/23) thumbnail e badge de fonte nos cards de notícia */
 .news-card-thumb{
-  height: 120px;
+  height: 150px;
   border-radius: var(--radius-m);
   background: var(--ink);
   position:relative;
   overflow:hidden;
 }
+.news-card-thumb img{
+  width:100%; height:100%; object-fit:cover; object-position: top center;
+  display:block; position:relative; z-index:1;
+  transition: transform .5s var(--ease);
+}
+.news-card:hover .news-card-thumb img{ transform: scale(1.05); }
 .news-card-thumb::after{
   content:''; position:absolute; inset:0;
-  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,.3), transparent 55%);
+  background: linear-gradient(0deg, rgba(0,0,0,.35), transparent 55%);
+  z-index:2; pointer-events:none;
 }
 .news-source{
   background: var(--signal-dim); padding:2px 8px; border-radius:999px;
