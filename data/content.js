@@ -241,11 +241,13 @@ window.RADAR_CONTENT = {
   },
 
   tema: {
-    corSinal: "#CFEA1E",
-    corVerdeInstitucional: "#0B6E12",
-    corVerdeMedio: "#159A2E",
-    corDestaque: "#F0C33E",
-    corFundo: "#0B120E"
+    // Visual minimalista em preto e branco — sem cor de destaque.
+    // Deixe null para usar exatamente os tons definidos em assets/css/style.css.
+    corSinal: null,
+    corVerdeInstitucional: null,
+    corVerdeMedio: null,
+    corDestaque: null,
+    corFundo: null
   },
 
   // Chaves em "false" escondem a seção/link correspondente — útil para

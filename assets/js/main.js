@@ -342,26 +342,7 @@ function setupHeroSpotlight() {
   });
 }
 
-function setupCustomCursor() {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  dot.style.opacity = '0';
-  document.body.appendChild(dot);
-
-  window.addEventListener('mousemove', (e) => {
-    dot.style.opacity = '1';
-    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
-  }, { passive: true });
-
-  const interactive = 'a, button, .flag-card, .photo-card, .news-card, .social-card, .stat-card, input, textarea';
-  document.addEventListener('mouseover', (e) => {
-    if (e.target.closest(interactive)) dot.classList.add('is-active');
-  });
-  document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(interactive)) dot.classList.remove('is-active');
-  });
-}
+/* função de cursor customizado removida — visual padrão do navegador */
 
 function setupPageTransitions() {
   document.body.classList.add('page-transition');
@@ -462,7 +443,14 @@ function applyVisibility(content) {
       if (el) el.style.display = 'none';
     }
   });
-  const navMap = { navFotos: 'fotos.html', navFigurinhas: 'figurinhas.html', navMoldura: 'moldura.html' };
+  const navMap = {
+    navFotos: 'fotos.html',
+    navFigurinhas: 'figurinhas.html',
+    navMoldura: 'moldura.html',
+    navAgenda: 'agenda.html',
+    navImprensa: 'imprensa.html',
+    navDoacoes: 'doacoes.html',
+  };
   Object.entries(navMap).forEach(([key, href]) => {
     if (v[key] === false) {
       document.querySelectorAll(`a[href="${href}"]`).forEach((a) => {
@@ -479,7 +467,6 @@ function init() {
   setupHeaderProgressiveOpacity();
   setupHeroParallax();
   setupHeroSpotlight();
-  setupCustomCursor();
   setupPageTransitions();
   const content = loadContent();
   if (!content) { setupReveal(); setupScrollSpy(); return; }

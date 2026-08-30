@@ -95,7 +95,7 @@
   cursor:pointer; transition: border-color .2s, background .2s;
 }
 .opcao-moldura:hover{ border-color: var(--ma-verde-hover); }
-.opcao-moldura.selecionada{ border-color: var(--ma-verde); background: rgba(21,128,61,.06); }
+.opcao-moldura.selecionada{ border-color: var(--ma-verde); background: rgba(0,0,0,.06); }
 .opcao-moldura-miniatura{ position:relative; width:100%; aspect-ratio:1/1; border-radius: var(--ma-radius-sm); overflow:hidden; background:#cbd5e1; flex-shrink:0; }
 .opcao-moldura-miniatura canvas{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .opcao-moldura-rotulo{ font-size:11px; font-weight:600; color: var(--ma-texto); text-align:center; line-height:1.3; }
@@ -137,7 +137,7 @@
 .rotacao-row{ display:flex; gap:8px; flex-wrap:wrap; }
 .btn-chip{ padding:7px 12px; border-radius:999px; border:1px solid var(--ma-borda); background:#fff; color: var(--ma-texto); font-size:12px; font-weight:600; cursor:pointer; }
 .btn-chip:hover{ border-color: var(--ma-verde); color: var(--ma-verde); }
-.btn-chip.ativo{ border-color: var(--ma-verde); background: rgba(21,128,61,.1); color: var(--ma-verde); }
+.btn-chip.ativo{ border-color: var(--ma-verde); background: rgba(0,0,0,.1); color: var(--ma-verde); }
 
 .moldura-app input[type="range"]{ -webkit-appearance:none; width:100%; height:4px; border-radius:2px; background: var(--ma-borda); outline:none; }
 .moldura-app input[type="range"]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background: var(--ma-verde); cursor:pointer; border:2px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.15); }
@@ -149,7 +149,7 @@
 .painel > p.descricao{ color: var(--ma-subtexto); font-size:13px; margin-bottom:20px; }
 
 .upload-box{ border:2px dashed var(--ma-borda); border-radius: var(--ma-radius-md); padding:26px 20px; text-align:center; background: var(--ma-bg-quadro); transition: all .2s ease; }
-.upload-box.arrastando-arquivo{ border-color: var(--ma-verde); background: rgba(21,128,61,.04); }
+.upload-box.arrastando-arquivo{ border-color: var(--ma-verde); background: rgba(0,0,0,.04); }
 .upload-box svg{ color: var(--ma-verde); margin-bottom:8px; }
 .upload-box strong{ display:block; font-size:14px; color: var(--ma-texto); margin-bottom:2px; }
 .upload-box span{ font-size:12px; color: var(--ma-subtexto); }
@@ -161,7 +161,7 @@
 .mensagem.visivel{ display:block; }
 .mensagem.aviso{ background: var(--ma-alerta-bg); color: var(--ma-alerta-texto); }
 .mensagem.erro{ background:#fee2e2; color:#991b1b; }
-.mensagem.sucesso{ background: rgba(21,128,61,.08); color: var(--ma-verde-hover); }
+.mensagem.sucesso{ background: rgba(0,0,0,.06); color: var(--ma-texto); font-weight:600; border:1px solid rgba(0,0,0,.14); }
 
 .campo-nome{ margin-top:20px; }
 .campo-nome label{ display:block; font-size:11px; font-weight:700; color: var(--ma-subtexto); margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em; }
@@ -196,7 +196,7 @@ body.alto-contraste .moldura-app *{ text-shadow:none !important; box-shadow:none
 body.alto-contraste .btn-escolher, body.alto-contraste .btn-primario{ background:#ff0; color:#000; border:2px solid #fff; }
 
 /* tela comemorativa + confete */
-.tela-sucesso{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; background: rgba(11,18,14,.72); padding:20px; }
+.tela-sucesso{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; background: rgba(10,10,10,.72); padding:20px; }
 .tela-sucesso.visivel{ display:flex; }
 .confete-canvas{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; }
 .tela-sucesso-cartao{ position:relative; z-index:1; background:#fff; border-radius: 20px; padding:32px 28px; text-align:center; max-width:320px; box-shadow:0 10px 40px rgba(0,0,0,.35); }

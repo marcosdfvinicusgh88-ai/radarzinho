@@ -30,7 +30,7 @@ window.MOLDURA_CONFIG = {
 
   tamanhoExportacao: 1254,
   legendaCompartilhamento: "Eu sou Daniel Radar, Deputado Distrital 70.000! Daqui. De Dentro. De Verdade. Coloque sua foto também:",
-  mensagemBoasVindas: "Bem-vindo! Escolha sua moldura, envie uma foto e mostre seu apoio 💚",
+  mensagemBoasVindas: "Bem-vindo! Escolha sua moldura, envie uma foto e mostre seu apoio 🤝",
 
   // Data da eleição para a contagem regressiva. Deixe "" para esconder.
   dataEleicao: "2026-10-04T08:00:00",
