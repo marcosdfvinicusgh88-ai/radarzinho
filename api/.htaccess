@@ -1,0 +1,5 @@
+# Bloqueia acesso direto a este arquivo pelo navegador — só o agenda.php
+# (que roda no próprio servidor) pode lê-lo.
+<Files "config.php">
+  Require all denied
+</Files>

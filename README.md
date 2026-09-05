@@ -3,61 +3,81 @@
 Site oficial da campanha de Daniel Radar a deputado distrital (AVANTE, 70.000)
 pelo Distrito Federal — Eleições 2026.
 
-**Site estático (HTML, CSS e JavaScript puro).** Não precisa de build nem de
-instalar nada para rodar. Os formulários usam o **Netlify Forms**, então
-funcionam automaticamente assim que o site é publicado no Netlify — sem
-precisar de backend.
+**Site estático (HTML, CSS e JavaScript puro), hospedado na HostGator.**
+Não precisa de build nem de instalar nada para o site em si funcionar.
+O contato do site é feito por redirecionamento direto (WhatsApp/e-mail) —
+não há formulários. A única parte "dinâmica" é a agenda de eventos, que
+vocês mesmos editam pelo navegador (ver passo 3), usando um pequeno
+script PHP incluído neste pacote (`api/agenda.php`) — a HostGator já
+roda PHP por padrão, não precisa configurar nada extra para isso.
 
 ---
 
-## 🚀 Publicar (GitHub → Netlify)
+## 🚀 Publicar na HostGator
 
-### 1. Suba este projeto para o GitHub
-```bash
-cd radar70000-site
-git init
-git add .
-git commit -m "Site da campanha Daniel Radar 70.000"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
-git push -u origin main
+### 1. Envie os arquivos pelo cPanel (Gerenciador de Arquivos) ou FTP
+
+1. Acesse o **cPanel** da sua hospedagem HostGator.
+2. Abra o **Gerenciador de Arquivos** (File Manager) e entre na pasta
+   `public_html` (ou a subpasta do domínio, se for um addon domain).
+3. Envie **todo o conteúdo desta pasta** (`radar70000-site/`, sem a pasta
+   em si — os arquivos e pastas soltos: `index.html`, `assets/`, `api/`,
+   `data/` etc.) direto para dentro de `public_html`.
+   - Se preferir, envie o `.zip` completo pelo próprio Gerenciador de
+     Arquivos e use a opção **Extract** (extrair) depois de enviado —
+     é mais rápido que enviar arquivo por arquivo.
+   - Também funciona por FTP (FileZilla, Cyberduck etc.) com os dados
+     de acesso que a HostGator te enviou por e-mail.
+
+### 2. Ajuste as permissões da pasta `data/`
+
+A agenda de eventos precisa que o PHP consiga **gravar** um arquivo
+dentro da pasta `data/`. Pelo Gerenciador de Arquivos da HostGator:
+
+1. Clique com o botão direito na pasta `data/` → **Permissions**
+   (Permissões).
+2. Defina como **755** (ou **775**, se 755 não funcionar — depende da
+   configuração do servidor). Marque para aplicar às subpastas se a
+   opção aparecer.
+3. Faça o mesmo, se necessário, no arquivo `data/agenda-eventos.json`
+   (permissão **644** ou **664**).
+
+Sem isso, a agenda funciona normalmente para leitura, mas adicionar,
+editar ou remover eventos pode dar erro de "não foi possível salvar".
+
+### 3. Configure a senha da Agenda (já vem pronta, mas pode trocar)
+
+A página `admin-agenda.html` permite adicionar/editar/remover eventos
+da agenda direto pelo navegador. A senha (token) já vem configurada
+neste pacote:
+
 ```
-(Ou, se preferir sem terminal: crie um repositório novo em
-[github.com/new](https://github.com/new) e arraste todos os arquivos desta
-pasta pela interface web do GitHub, em "Add file → Upload files".)
+agendadoradar2026
+```
 
-### 2. Conecte o repositório ao Netlify
-1. Acesse [app.netlify.com](https://app.netlify.com) e entre com sua conta.
-2. Clique em **Add new site → Import an existing project**.
-3. Escolha **GitHub** e autorize o acesso, depois selecione este repositório.
-4. Configurações de build — deixe como está, elas já vêm prontas do arquivo
-   `netlify.toml` deste projeto:
-   - **Build command:** (vazio)
-   - **Publish directory:** `.`
-5. Clique em **Deploy site**. Em menos de um minuto o site já está no ar,
-   com uma URL do tipo `nome-aleatorio.netlify.app`.
+Para trocar essa senha no futuro, edite o arquivo `api/config.php`
+(pelo Gerenciador de Arquivos da HostGator, botão **Edit**) e troque o
+valor entre aspas na linha `define('ADMIN_TOKEN', '...');`. Salve — a
+alteração já vale na hora, sem precisar reiniciar nada.
 
-### 3. Ative os formulários (1 clique)
-O Netlify detecta os formulários (`voluntario` e `contato`) automaticamente
-no primeiro deploy, mas a **notificação por e-mail** precisa ser ligada uma
-vez:
-1. No painel do site, vá em **Forms**.
-2. Você já deve ver os formulários `voluntario` e `contato` listados —
-   clique em cada um → **Settings and usage → Add notification → Email
-   notification** e coloque o e-mail da coordenação da campanha.
+Passo a passo completo e como usar a página de edição:
+**[`README-AGENDA.md`](./README-AGENDA.md)**.
 
-Pronto — a partir daí, toda vez que alguém preencher os formulários do
-site, a resposta aparece em **Site → Forms** no painel do Netlify, e a
-coordenação recebe um e-mail avisando.
+### 4. Confirme o domínio
 
-### 4. (Opcional) Domínio próprio
-Em **Domain settings → Add a domain**, adicione o domínio da campanha (ex:
-`danielradar70000.com.br`) e siga as instruções de DNS mostradas na tela.
+Se o domínio da campanha for outro (diferente de
+`danielradar70000.com.br`), atualize as poucas menções a ele em
+`sitemap.xml`, `robots.txt` e nas tags `canonical`/`og:url` de cada
+página HTML (busque por `danielradar70000.com.br` no Gerenciador de
+Arquivos ou em qualquer editor de texto).
 
-### 5. Próximos deploys
-A partir daqui, qualquer alteração que você enviar para o GitHub (`git push`)
-publica automaticamente uma nova versão do site no Netlify — não precisa
-repetir os passos acima.
+### 5. Próximas atualizações
+
+Diferente do Netlify (que publicava sozinho a cada `git push`), na
+HostGator qualquer alteração precisa ser reenviada manualmente: edite
+o arquivo localmente, depois suba o arquivo alterado pelo Gerenciador
+de Arquivos ou FTP, substituindo o antigo. Não precisa reenviar o site
+inteiro — só o(s) arquivo(s) que mudou(aram).
 
 ---
 
@@ -67,6 +87,8 @@ repetir os passos acima.
 index.html               → página inicial (quem sou, bandeiras, compromissos,
                             notícias, participe, formulários, redes sociais)
 agenda.html               → agenda de eventos (próximos / já realizados)
+admin-agenda.html         → painel para você adicionar/editar/remover eventos
+                            da agenda (ver README-AGENDA.md)
 imprensa.html             → kit de imprensa, ficha técnica e cobertura na mídia
 doacoes.html               → informações sobre doação (redireciona ao canal oficial)
 fotos.html                 → "Encontre sua foto" — álbuns de eventos por data/local
@@ -77,11 +99,12 @@ privacidade.html            → política de privacidade da moldura
 
 data/content.js             → TODO o conteúdo de texto do site (edite aqui)
 data/moldura-config.js      → as molduras oficiais disponíveis na ferramenta
+data/agenda-eventos.json    → dados da agenda (gerido pela API, ver abaixo)
 
 assets/css/style.css         → visual geral do site
 assets/css/moldura-tool.css  → visual só da ferramenta de moldura
 assets/js/main.js            → lê content.js e injeta nas páginas
-assets/js/api.js             → envio dos formulários (Netlify Forms)
+assets/js/api.js             → tracking leve e opcional de eventos (downloads)
 assets/js/moldura-tool.js    → lógica da ferramenta de moldura (canvas)
 assets/js/lightbox.js        → visualizador de foto em tela cheia
 
@@ -92,25 +115,26 @@ assets/img/perfil/        → fotos oficiais usadas no hero e em "Quem sou"
 
 downloads/                → arquivos .zip para download (figurinhas, kit de imprensa)
 
-server/                   → backend leve OPCIONAL — só necessário se vocês
-                            quiserem um backend próprio no lugar do Netlify
-                            Forms (ver server/README.md)
+api/agenda.php            → API PHP da agenda (lê/grava data/agenda-eventos.json)
+api/config.php             → senha de administrador da agenda (ADMIN_TOKEN)
+api/.htaccess               → bloqueia acesso direto ao config.php
 
-netlify.toml, .gitignore  → configuração de deploy e do Git
-robots.txt, sitemap.xml   → arquivos padrão para mecanismos de busca
+robots.txt, sitemap.xml  → arquivos padrão para mecanismos de busca
 ```
 
 ## Como atualizar o conteúdo
 
-Não existe painel administrativo. Para mudar qualquer texto, número,
-proposta, link de rede social, telefone, notícia, evento da agenda ou item
-do kit de imprensa, edite os valores dentro de `data/content.js`, salve e
-suba (`git push`) — o Netlify publica a nova versão automaticamente.
+Não existe painel administrativo para o conteúdo geral. Para mudar
+qualquer texto, número, proposta, link de rede social, telefone,
+notícia ou item do kit de imprensa, edite os valores dentro de
+`data/content.js` (pelo Gerenciador de Arquivos → Edit, ou baixando,
+editando localmente e reenviando) e salve — a alteração aparece assim
+que o arquivo for atualizado no servidor.
 
-### Formulários (voluntário e contato)
-Já funcionam assim que o site é publicado no Netlify — ver passo 3 acima.
-As respostas ficam em **Site → Forms** no painel do Netlify. Se quiser
-migrar para um backend próprio depois, veja `server/README.md`.
+### Contato (WhatsApp / e-mail)
+O site não tem formulários — o card "Fale com a gente" e o botão "Entrar
+no grupo de voluntários" são redirecionamentos diretos. Números e e-mail
+ficam em `contato` (`data/content.js`).
 
 ### Molduras de apoio
 As molduras oficiais ficam em `assets/img/molduras/` e são listadas em
@@ -143,8 +167,10 @@ Cada evento vira um "álbum" no array `albunsFotos` de `data/content.js`:
 ```
 
 ### Agenda de eventos
-Array `agenda` em `data/content.js`. Use `status: "proximo"` ou
-`status: "realizado"` em cada item.
+A agenda **não é editada em `content.js`** — vocês mesmos adicionam,
+editam e removem eventos direto pelo navegador, em `admin-agenda.html`.
+Veja o passo a passo completo (incluindo a senha de administrador) em
+**`README-AGENDA.md`**.
 
 ### Kit de imprensa
 Textos em `kitImprensa` (`data/content.js`). O arquivo `.zip` baixável fica
@@ -160,12 +186,18 @@ a URL real desse canal.
 ## Como testar localmente
 
 Como o site não usa módulos ES, basta abrir `index.html` diretamente no
-navegador (duplo clique). Os formulários não vão enviar de verdade fora do
-Netlify (isso é esperado — o Netlify Forms só funciona depois do deploy),
-mas o restante do site funciona normalmente, inclusive offline.
+navegador (duplo clique). A agenda (`agenda.html` e `admin-agenda.html`)
+depende do PHP (`api/agenda.php`), então só funciona de verdade com um
+servidor PHP rodando — localmente ela vai mostrar "não foi possível
+carregar". O restante do site funciona normalmente, inclusive offline.
 
-Se quiser simular um servidor local:
+Se quiser simular um servidor local com PHP (necessário para testar a
+agenda antes de publicar):
+
 ```bash
-python3 -m http.server 8080
+php -S localhost:8080
 # depois abra http://localhost:8080
 ```
+
+(Sem PHP instalado, `python3 -m http.server 8080` também funciona, mas
+aí a agenda não vai carregar — só o restante do site.)

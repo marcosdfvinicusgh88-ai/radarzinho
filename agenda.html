@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agenda de Eventos | Daniel Radar 70.000</title>
 <meta name="description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha de Daniel Radar 70.000 pelo Distrito Federal.">
-<link rel="canonical" href="https://sitedanielradar.netlify.app/agenda.html">
+<link rel="canonical" href="https://www.danielradar70000.com.br/agenda.html">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sitedanielradar.netlify.app/agenda.html">
+<meta property="og:url" content="https://www.danielradar70000.com.br/agenda.html">
 <meta property="og:site_name" content="Daniel Radar 70.000">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Agenda de Eventos | Daniel Radar 70.000">
 <meta property="og:description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha 70.000 pelo Distrito Federal.">
-<meta property="og:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta property="og:image" content="https://www.danielradar70000.com.br/assets/img/share-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Agenda de Eventos | Daniel Radar 70.000">
 <meta name="twitter:description" content="Confira a agenda de caminhadas, carreatas e encontros da campanha 70.000 pelo Distrito Federal.">
-<meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
+<meta name="twitter:image" content="https://www.danielradar70000.com.br/assets/img/share-cover.png">
 
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -140,11 +140,12 @@
   function escAgenda(str) {
     return String(str ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
-  document.addEventListener('radar:content-ready', (e) => {
-    const eventos = (e.detail && e.detail.agenda) || [];
+  document.addEventListener('radar:content-ready', () => {
     const list = document.getElementById('agendaList');
     const tabs = document.querySelectorAll('.agenda-tab');
     if (!list) return;
+
+    let eventos = [];
 
     function render(filtro) {
       const filtrados = eventos.filter((ev) => ev.status === filtro);
@@ -182,7 +183,16 @@
       });
     });
 
-    render('proximo');
+    list.innerHTML = '<p class="empty-state">Carregando agenda...</p>';
+    fetch('/api/agenda.php')
+      .then((r) => r.json())
+      .then((data) => {
+        eventos = data.eventos || [];
+        render('proximo');
+      })
+      .catch(() => {
+        list.innerHTML = '<p class="empty-state">Não foi possível carregar a agenda agora. Tente novamente em instantes.</p>';
+      });
   });
 </script>
 </body>

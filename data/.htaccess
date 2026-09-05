@@ -1,0 +1,7 @@
+# Esta pasta também guarda data/content.js e data/moldura-config.js,
+# que PRECISAM continuar acessíveis (o site carrega os dois direto no
+# navegador). Por isso bloqueamos só o arquivo de dados da agenda,
+# que deve ser lido/gravado apenas pelo api/agenda.php no servidor.
+<Files "agenda-eventos.json">
+  Require all denied
+</Files>

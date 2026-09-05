@@ -170,55 +170,10 @@ window.RADAR_CONTENT = {
     rodape: "ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal • Todos os direitos reservados."
   },
 
-  // Agenda de eventos públicos da campanha. "status" pode ser "proximo" ou
-  // "realizado" — eventos passados ficam visíveis como registro, mas em
-  // uma aba separada. Adicione um novo objeto sempre que marcar um evento.
-  agenda: [
-    {
-      id: "caminhada-santa-maria",
-      status: "proximo",
-      titulo: "Caminhada em Santa Maria",
-      data: "6 de setembro de 2026",
-      horario: "08h00",
-      local: "Praça Central de Santa Maria",
-      endereco: "Santa Maria, Brasília - DF",
-      descricao: "Caminhada pelas quadras centrais com conversa direta com moradores e lideranças comunitárias.",
-      mapaUrl: "https://www.google.com/maps/search/?api=1&query=Pra%C3%A7a+Central+de+Santa+Maria+DF"
-    },
-    {
-      id: "carreata-gama",
-      status: "proximo",
-      titulo: "Carreata no Gama",
-      data: "13 de setembro de 2026",
-      horario: "15h00",
-      local: "Setor Central do Gama",
-      endereco: "Gama, Brasília - DF",
-      descricao: "Concentração de carros e motos com saída do Setor Central, reforçando o apoio à candidatura 70.000.",
-      mapaUrl: "https://www.google.com/maps/search/?api=1&query=Setor+Central+do+Gama+DF"
-    },
-    {
-      id: "roda-conversa-recanto",
-      status: "proximo",
-      titulo: "Roda de conversa — saúde e mobilidade",
-      data: "20 de setembro de 2026",
-      horario: "19h30",
-      local: "Associação de Moradores do Recanto das Emas",
-      endereco: "Recanto das Emas, Brasília - DF",
-      descricao: "Encontro aberto para ouvir demandas de saúde e transporte público direto dos moradores da região.",
-      mapaUrl: "https://www.google.com/maps/search/?api=1&query=Recanto+das+Emas+DF"
-    },
-    {
-      id: "convencao-avante",
-      status: "realizado",
-      titulo: "Convenção do Avante — candidatura oficializada",
-      data: "1 de agosto de 2026",
-      horario: "10h00",
-      local: "Convenção partidária",
-      endereco: "Distrito Federal",
-      descricao: "Homologação da candidatura de Daniel Radar a deputado distrital, com mais de 14 mil participantes.",
-      mapaUrl: ""
-    }
-  ],
+  // A agenda de eventos NÃO fica mais aqui — ela agora é gerenciada direto
+  // pelo site em admin-agenda.html (que salva em data/agenda-eventos.json
+  // através da API api/agenda.php). Veja README-AGENDA.md.
+  agenda: [],
 
   // Kit de imprensa: material de apoio para jornalistas e veículos de
   // comunicação. O zip pode ser regerado sempre que houver fotos/textos novos.
@@ -239,7 +194,7 @@ window.RADAR_CONTENT = {
   // redireciona para o canal oficial homologado pela campanha, conforme a
   // legislação eleitoral (doações identificadas, com CPF do doador).
   doacao: {
-    linkOficial: "https://doe.la/daniel-radar",
+    linkOficial: "https://www.doeaqui.asaas.com/danielradar70000",
     limiteInformativo: "Pessoas físicas podem doar até 10% dos seus rendimentos brutos do ano anterior, conforme a legislação eleitoral (Lei nº 9.504/1997).",
     textoIntro: "Sua doação ajuda a custear material de campanha, deslocamento e ações de rua da candidatura 70.000. Toda doação é identificada e registrada na prestação de contas oficial à Justiça Eleitoral."
   },

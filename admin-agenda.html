@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerenciar Agenda | Daniel Radar 70.000</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .admin-wrap{ max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+  .admin-gate{ max-width: 420px; margin: 80px auto; text-align:center; }
+  .admin-gate input{
+    width:100%; margin-top:16px; padding:12px 14px; border-radius: var(--radius-s);
+    border:1px solid var(--ink-line); font-size:15px;
+  }
+  .admin-gate .btn{ margin-top:14px; width:100%; justify-content:center; }
+  .admin-gate p.erro{ color:#c0392b; margin-top:10px; font-size:13.5px; }
+
+  .admin-form{
+    background: var(--paper-dim); border-radius: var(--radius-l); padding:26px;
+    display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+    margin-bottom: 40px;
+  }
+  .admin-form .full{ grid-column: 1 / -1; }
+  .admin-form label{
+    display:block; font-family: var(--f-mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; color: var(--ink-45); margin-bottom:5px;
+  }
+  .admin-form input, .admin-form select, .admin-form textarea{
+    width:100%; padding:10px 12px; border-radius: var(--radius-s); border:1px solid var(--ink-line);
+    font-family: var(--f-body); font-size:14px; color: var(--ink); background: var(--white);
+  }
+  .admin-form textarea{ resize: vertical; min-height: 70px; }
+  .admin-form .full-actions{ grid-column: 1/-1; display:flex; gap:12px; align-items:center; }
+  @media (max-width: 640px){ .admin-form{ grid-template-columns: 1fr; } }
+
+  .admin-item{
+    display:flex; justify-content:space-between; gap:16px; align-items:flex-start;
+    padding:16px 0; border-bottom:1px solid var(--ink-line);
+  }
+  .admin-item h4{ font-family: var(--f-display); font-size:16px; }
+  .admin-item p{ color: var(--ink-45); font-size:13px; margin-top:4px; }
+  .admin-item .badge{
+    font-family: var(--f-mono); font-size:10.5px; text-transform:uppercase; padding:3px 9px;
+    border-radius:999px; background: var(--green-deep); color:#fff; margin-right:8px;
+  }
+  .admin-item .badge.realizado{ background: var(--ink-45); }
+  .admin-item-actions{ display:flex; gap:8px; flex:none; }
+  .admin-item-actions button{
+    border:1px solid var(--ink-line); background:var(--white); border-radius: var(--radius-s);
+    padding:7px 12px; font-size:12.5px; cursor:pointer; font-family: var(--f-body);
+  }
+  .admin-item-actions button.excluir{ color:#c0392b; border-color:#f2c4c4; }
+  .admin-status{ font-size:13.5px; margin-top:10px; min-height:1.4em; }
+  .admin-status.ok{ color: var(--green-mid); }
+  .admin-status.erro{ color:#c0392b; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img class="brand-logo" src="assets/img/logo/daniel-radar-logo.png" alt="Daniel Radar — Deputado Distrital">
+      <span class="brand-number">70.000</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- TELA DE SENHA -->
+  <div class="admin-wrap admin-gate" id="gate">
+    <span class="eyebrow" style="justify-content:center">Área restrita</span>
+    <h1 style="font-family:var(--f-display); font-size:26px; margin-top:8px;">Gerenciar Agenda</h1>
+    <p style="color:var(--ink-70); margin-top:8px;">Digite o token de administrador para editar os eventos da agenda.</p>
+    <input type="password" id="tokenInput" placeholder="Token de administrador" autocomplete="off">
+    <button class="btn btn-primary" id="entrarBtn">Entrar</button>
+    <p class="erro" id="gateErro"></p>
+  </div>
+
+  <!-- PAINEL (só aparece depois do token correto) -->
+  <div class="admin-wrap" id="painel" style="display:none;">
+    <span class="eyebrow">Gerenciar</span>
+    <h1 style="font-family:var(--f-display); font-size:28px; margin-top:8px;">Agenda de eventos</h1>
+    <p style="color:var(--ink-70); margin-top:8px 0 28px;">Adicione, edite ou remova os eventos que aparecem em <a href="agenda.html" target="_blank" style="text-decoration:underline">agenda.html</a>. As mudanças aparecem no site em poucos segundos.</p>
+
+    <form class="admin-form" id="form">
+      <input type="hidden" id="editId" value="">
+      <div class="full">
+        <label for="fTitulo">Título do evento *</label>
+        <input id="fTitulo" required maxlength="160" placeholder="Ex: Caminhada em Santa Maria">
+      </div>
+      <div>
+        <label for="fData">Data (por extenso) *</label>
+        <input id="fData" required maxlength="60" placeholder="Ex: 6 de setembro de 2026">
+      </div>
+      <div>
+        <label for="fHorario">Horário</label>
+        <input id="fHorario" maxlength="30" placeholder="Ex: 08h00">
+      </div>
+      <div>
+        <label for="fLocal">Local</label>
+        <input id="fLocal" maxlength="160" placeholder="Ex: Praça Central de Santa Maria">
+      </div>
+      <div>
+        <label for="fStatus">Status</label>
+        <select id="fStatus">
+          <option value="proximo">Próximo evento</option>
+          <option value="realizado">Já realizado</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="fDescricao">Descrição</label>
+        <textarea id="fDescricao" maxlength="600" placeholder="Um parágrafo curto sobre o evento"></textarea>
+      </div>
+      <div class="full">
+        <label for="fMapa">Link do mapa (opcional)</label>
+        <input id="fMapa" maxlength="500" placeholder="https://www.google.com/maps/...">
+      </div>
+      <div class="full-actions">
+        <button type="submit" class="btn btn-primary" id="salvarBtn">Adicionar evento</button>
+        <button type="button" class="btn btn-outline" id="cancelarEdicaoBtn" style="display:none;">Cancelar edição</button>
+        <span class="admin-status" id="formStatus"></span>
+      </div>
+    </form>
+
+    <h2 style="font-family:var(--f-display); font-size:18px; margin-bottom:6px;">Eventos cadastrados</h2>
+    <div id="lista"></div>
+  </div>
+</main>
+
+<script>
+(function () {
+  const FN_URL = '/api/agenda.php';
+  const gate = document.getElementById('gate');
+  const painel = document.getElementById('painel');
+  const tokenInput = document.getElementById('tokenInput');
+  const gateErro = document.getElementById('gateErro');
+  const lista = document.getElementById('lista');
+  const form = document.getElementById('form');
+  const formStatus = document.getElementById('formStatus');
+  const editId = document.getElementById('editId');
+  const salvarBtn = document.getElementById('salvarBtn');
+  const cancelarBtn = document.getElementById('cancelarEdicaoBtn');
+
+  function token() { return sessionStorage.getItem('radar70000_admin_token') || ''; }
+
+  function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  async function carregarEventos() {
+    const res = await fetch(FN_URL);
+    const data = await res.json();
+    const eventos = (data.eventos || []).slice().sort((a, b) => (a.status === b.status ? 0 : a.status === 'proximo' ? -1 : 1));
+    if (!eventos.length) {
+      lista.innerHTML = '<p style="color:var(--ink-45)">Nenhum evento cadastrado ainda.</p>';
+      return;
+    }
+    lista.innerHTML = eventos.map((ev) => `
+      <div class="admin-item" data-id="${escapeHtml(ev.id)}">
+        <div>
+          <span class="badge ${ev.status === 'realizado' ? 'realizado' : ''}">${ev.status === 'realizado' ? 'Realizado' : 'Próximo'}</span>
+          <h4 style="display:inline">${escapeHtml(ev.titulo)}</h4>
+          <p>${escapeHtml(ev.data)} ${ev.horario ? '· ' + escapeHtml(ev.horario) : ''} ${ev.local ? '· ' + escapeHtml(ev.local) : ''}</p>
+        </div>
+        <div class="admin-item-actions">
+          <button type="button" class="editar">Editar</button>
+          <button type="button" class="excluir">Excluir</button>
+        </div>
+      </div>
+    `).join('');
+
+    lista.querySelectorAll('.admin-item').forEach((el) => {
+      const ev = eventos.find((e) => e.id === el.dataset.id);
+      el.querySelector('.editar').addEventListener('click', () => preencherForm(ev));
+      el.querySelector('.excluir').addEventListener('click', () => excluirEvento(ev));
+    });
+  }
+
+  function preencherForm(ev) {
+    editId.value = ev.id;
+    document.getElementById('fTitulo').value = ev.titulo || '';
+    document.getElementById('fData').value = ev.data || '';
+    document.getElementById('fHorario').value = ev.horario || '';
+    document.getElementById('fLocal').value = ev.local || '';
+    document.getElementById('fStatus').value = ev.status || 'proximo';
+    document.getElementById('fDescricao').value = ev.descricao || '';
+    document.getElementById('fMapa').value = ev.mapaUrl || '';
+    salvarBtn.textContent = 'Salvar alterações';
+    cancelarBtn.style.display = 'inline-flex';
+    window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+  }
+
+  function limparForm() {
+    form.reset();
+    editId.value = '';
+    salvarBtn.textContent = 'Adicionar evento';
+    cancelarBtn.style.display = 'none';
+  }
+  cancelarBtn.addEventListener('click', limparForm);
+
+  async function excluirEvento(ev) {
+    if (!confirm(`Remover "${ev.titulo}" da agenda?`)) return;
+    const res = await fetch(FN_URL, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Token': token() },
+      body: JSON.stringify({ id: ev.id }),
+    });
+    if (res.ok) { carregarEventos(); } else { alert('Não foi possível remover. Verifique o token.'); }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+      titulo: document.getElementById('fTitulo').value.trim(),
+      data: document.getElementById('fData').value.trim(),
+      horario: document.getElementById('fHorario').value.trim(),
+      local: document.getElementById('fLocal').value.trim(),
+      status: document.getElementById('fStatus').value,
+      descricao: document.getElementById('fDescricao').value.trim(),
+      mapaUrl: document.getElementById('fMapa').value.trim(),
+    };
+    formStatus.textContent = 'Salvando...';
+    formStatus.className = 'admin-status';
+
+    try {
+      let res;
+      if (editId.value) {
+        res = await fetch(FN_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'X-Admin-Token': token() },
+          body: JSON.stringify({ id: editId.value, ...payload }),
+        });
+      } else {
+        res = await fetch(FN_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Admin-Token': token() },
+          body: JSON.stringify(payload),
+        });
+      }
+      const data = await res.json();
+      if (!res.ok || data.ok === false) throw new Error(data.erro || 'Erro ao salvar.');
+      formStatus.textContent = 'Salvo com sucesso!';
+      formStatus.className = 'admin-status ok';
+      limparForm();
+      carregarEventos();
+    } catch (err) {
+      formStatus.textContent = err.message;
+      formStatus.className = 'admin-status erro';
+    }
+  });
+
+  async function tentarEntrar() {
+    const t = tokenInput.value.trim();
+    if (!t) return;
+    // valida o token tentando uma operação protegida "vazia" (DELETE de um id inexistente)
+    const res = await fetch(FN_URL, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Token': t },
+      body: JSON.stringify({ id: '__validacao_token__' }),
+    });
+    if (res.status === 401) {
+      gateErro.textContent = 'Token inválido.';
+      return;
+    }
+    sessionStorage.setItem('radar70000_admin_token', t);
+    gate.style.display = 'none';
+    painel.style.display = 'block';
+    carregarEventos();
+  }
+  document.getElementById('entrarBtn').addEventListener('click', tentarEntrar);
+  tokenInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tentarEntrar(); });
+
+  // se já validou nesta aba antes, pula a tela de senha
+  if (token()) {
+    gate.style.display = 'none';
+    painel.style.display = 'block';
+    carregarEventos();
+  }
+})();
+</script>
+</body>
+</html>

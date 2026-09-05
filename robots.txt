@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sitedanielradar.netlify.app/sitemap.xml
+Sitemap: https://www.danielradar70000.com.br/sitemap.xml
