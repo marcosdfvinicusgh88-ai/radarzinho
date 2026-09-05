@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Um de nós, representando a nossa voz. Conheça a campanha de Daniel Radar para deputado distrital do DF.">
 <meta name="twitter:image" content="https://sitedanielradar.netlify.app/assets/img/share-cover.png">
 
-<meta name="theme-color" content="#0A0A0A">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="shortcut icon" href="assets/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,8 +56,8 @@
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span id="brandName">Daniel Radar</span> <span class="brand-number" id="brandNumber">70.000</span>
+      <img class="brand-logo" src="assets/img/logo/daniel-radar-logo.png" alt="Daniel Radar — Deputado Distrital">
+      <span class="brand-number" id="brandNumber">70.000</span>
     </a>
     <nav class="nav" id="mainNav">
       <a href="#quem-sou">Quem sou</a>
@@ -99,7 +99,7 @@
         <p class="hero-sub" id="heroSub">Há mais de 15 anos dando voz às comunidades, fiscalizando os serviços públicos, denunciando problemas e cobrando soluções para a população. Agora, com essa mesma força, sigo lutando por um DF mais justo.</p>
 
         <div class="ballot">
-          <span class="ballot-label">Na urna, digite</span>
+          <span class="ballot-label">Na urna, digite<strong id="ballotNome">Daniel Radar</strong></span>
           <div class="ballot-digits" id="ballotDigits" aria-label="70000">
             <span>7</span><span>0</span><span>0</span><span>0</span><span>0</span>
           </div>
@@ -107,8 +107,12 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" data-download="propostasPdf" href="#">Baixar propostas completas</a>
-          <a class="btn btn-outline" data-download="jingle" href="#">Ouvir jingle da campanha</a>
+          <a class="btn btn-primary" data-download="propostasPdf" href="#">Baixar propostas completas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-outline" data-download="jingle" href="#">Ouvir jingle da campanha
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 19h14"/></svg>
+          </a>
         </div>
       </div>
 
@@ -313,70 +317,47 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
   <!-- VOLUNTÁRIO -->
   <section class="section">
     <div class="container">
-      <div class="cta-band reveal">
+      <div class="cta-band reveal" style="grid-template-columns:1fr;">
         <div>
           <span class="eyebrow" style="color:var(--signal)">Venha fazer parte</span>
           <h2>Venha fazer parte desse movimento de renovação</h2>
-          <p>Entre no grupo de voluntários no WhatsApp ou deixe seus dados que a coordenação entra em contato.</p>
-          <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">Entrar no grupo de voluntários</a>
+          <p>Entre no grupo de voluntários no WhatsApp e receba a agenda de caminhadas, carreatas e ações em primeira mão.</p>
+          <a class="btn btn-primary" data-href="grupoVoluntariosWhatsapp" href="#" target="_blank" rel="noopener">
+            Entrar no grupo de voluntários
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.13-1.32C8.57 21.5 10.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.13c-1.6 0-3.09-.47-4.34-1.28l-.31-.19-3.05.78.81-2.97-.2-.31A8.12 8.12 0 013.87 12C3.87 7.53 7.53 3.87 12 3.87S20.13 7.53 20.13 12 16.47 20.13 12 20.13z"/></svg>
+          </a>
         </div>
-        <form class="mini-form" id="formVoluntario" name="voluntario" method="POST" data-netlify="true" netlify-honeypot="website">
-          <input type="hidden" name="form-name" value="voluntario">
-          <h3>Quero ser voluntário(a)</h3>
-          <div class="mini-form-row">
-            <label class="visually-hidden" for="volNome">Nome</label>
-            <input id="volNome" name="nome" type="text" placeholder="Seu nome" required maxlength="120" autocomplete="name">
-          </div>
-          <div class="mini-form-row mini-form-row--split">
-            <div>
-              <label class="visually-hidden" for="volTelefone">Telefone / WhatsApp</label>
-              <input id="volTelefone" name="telefone" type="tel" placeholder="WhatsApp" maxlength="40" autocomplete="tel">
-            </div>
-            <div>
-              <label class="visually-hidden" for="volBairro">Bairro</label>
-              <input id="volBairro" name="bairro" type="text" placeholder="Bairro / RA" maxlength="120" autocomplete="address-level2">
-            </div>
-          </div>
-          <!-- honeypot anti-spam: campo invisível, humano não preenche -->
-          <p class="visually-hidden"><label>Não preencha isto: <input name="website" tabindex="-1" autocomplete="off"></label></p>
-          <button type="submit" class="btn btn-outline btn-block">Quero ajudar</button>
-          <p class="mini-form-status" id="volStatus" role="status" aria-live="polite"></p>
-        </form>
       </div>
     </div>
   </section>
 
   <!-- CONTATO -->
   <section class="section section--tight" id="contato-form">
-    <div class="container container--narrow">
+    <div class="container container--narrow text-center">
       <span class="eyebrow">Fale com a coordenação</span>
       <h2 class="section-title reveal">Fale com a gente</h2>
-      <p class="section-lede">Dúvidas, sugestões ou imprensa: preencha o formulário abaixo e respondemos o quanto antes.</p>
+      <p class="section-lede">Dúvidas, sugestões ou imprensa: fale direto com a coordenação da campanha, sem burocracia.</p>
 
-      <form class="contact-form reveal" id="formContato" name="contato" method="POST" data-netlify="true" netlify-honeypot="website">
-        <input type="hidden" name="form-name" value="contato">
-        <div class="contact-form-row contact-form-row--split">
-          <div>
-            <label for="ctNome">Nome</label>
-            <input id="ctNome" name="nome" type="text" required maxlength="120" autocomplete="name">
-          </div>
-          <div>
-            <label for="ctEmail">E-mail</label>
-            <input id="ctEmail" name="email" type="email" required maxlength="160" autocomplete="email">
-          </div>
-        </div>
-        <div class="contact-form-row">
-          <label for="ctAssunto">Assunto</label>
-          <input id="ctAssunto" name="assunto" type="text" maxlength="160">
-        </div>
-        <div class="contact-form-row">
-          <label for="ctMensagem">Mensagem</label>
-          <textarea id="ctMensagem" name="mensagem" rows="4" required maxlength="2000"></textarea>
-        </div>
-        <p class="visually-hidden"><label>Não preencha isto: <input name="website" tabindex="-1" autocomplete="off"></label></p>
-        <button type="submit" class="btn btn-solid-ink">Enviar mensagem</button>
-        <p class="mini-form-status" id="ctStatus" role="status" aria-live="polite"></p>
-      </form>
+      <div class="contact-redirects reveal">
+        <a class="contact-redirect-card" id="contatoWhatsapp" href="#" target="_blank" rel="noopener">
+          <span class="contact-redirect-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.13-1.32C8.57 21.5 10.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.13c-1.6 0-3.09-.47-4.34-1.28l-.31-.19-3.05.78.81-2.97-.2-.31A8.12 8.12 0 013.87 12C3.87 7.53 7.53 3.87 12 3.87S20.13 7.53 20.13 12 16.47 20.13 12 20.13z"/></svg>
+          </span>
+          <span>
+            <strong>WhatsApp</strong>
+            <span>Resposta rápida com a coordenação</span>
+          </span>
+        </a>
+        <a class="contact-redirect-card" id="contatoEmail" href="#">
+          <span class="contact-redirect-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span>
+            <strong>E-mail</strong>
+            <span>Para imprensa, parcerias e sugestões</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -387,8 +368,8 @@ Como cidadão, e sem mandato parlamentar, construí essa trajetória com muito t
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          Daniel Radar <span class="brand-number">70.000</span>
+          <img class="brand-logo" src="assets/img/logo/daniel-radar-logo-branco.png" alt="Daniel Radar — Deputado Distrital">
+          <span class="brand-number">70.000</span>
         </div>
         <p>Uma campanha de verdade para a Câmara Legislativa do Distrito Federal. Trabalho, coragem e compromisso com o povo.</p>
         <div class="footer-social">

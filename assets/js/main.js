@@ -40,12 +40,25 @@ function bindLinks(content) {
   });
 }
 
+const FLAG_ICONS = {
+  saude: '<path d="M12 21s-7-4.35-9.5-9C.8 8.1 3 4.5 6.5 4.5c2 0 3.3 1.1 4 2 .7-.9 2-2 4-2 3.5 0 5.7 3.6 4 7.5C19 16.65 12 21 12 21z"/>',
+  transporte: '<rect x="3" y="6" width="18" height="11" rx="2.5"/><path d="M3 13h18"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/>',
+  educacao: '<path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/>',
+  emprego: '<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>',
+  regularizacao: '<path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/>',
+  seguranca: '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>',
+};
+const FLAG_ICON_PADRAO = '<circle cx="12" cy="12" r="9"/>';
+
 function renderFlags(content) {
   const grid = document.getElementById('flagsGrid');
   if (!grid) return;
   const bandeiras = content.bandeiras || [];
   grid.innerHTML = bandeiras.map((b, i) => `
     <div class="flag-card reveal" data-num="${String(i + 1).padStart(2, '0')}">
+      <span class="flag-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">${FLAG_ICONS[b.id] || FLAG_ICON_PADRAO}</svg>
+      </span>
       <span class="flag-num">${String(i + 1).padStart(2, '0')}</span>
       <h3>${esc(b.titulo)}</h3>
       <p>${esc(b.texto)}</p>
@@ -160,6 +173,19 @@ function renderFooter(content) {
   if (comite) comite.textContent = content.contato.comite;
   if (cnpj) cnpj.textContent = content.contato.cnpj;
   if (legal) legal.textContent = content.contato.rodape;
+
+  // redirecionamentos de contato (sem formulário: WhatsApp e e-mail direto)
+  const wppLink = document.getElementById('contatoWhatsapp');
+  const emailLink = document.getElementById('contatoEmail');
+  const numero = (content.contato.coordenacaoGeral || '').replace(/\D/g, '');
+  if (wppLink) {
+    wppLink.href = numero
+      ? `https://wa.me/55${numero}?text=${encodeURIComponent('Olá! Vim pelo site do Daniel Radar 70.000 e gostaria de falar com a coordenação.')}`
+      : (content.links && content.links.grupoVoluntariosWhatsapp) || '#';
+  }
+  if (emailLink && content.contato.email) {
+    emailLink.href = `mailto:${content.contato.email}`;
+  }
 }
 
 function renderHeroAndAbout(content) {
@@ -189,6 +215,8 @@ function renderHeroAndAbout(content) {
     digits.innerHTML = String(c.numero).split('').map((d) => `<span>${esc(d)}</span>`).join('');
   }
   if (party && (c.partido || c.partidoNumero)) party.textContent = `${c.partido || ''} ${c.partidoNumero || ''}`.trim();
+  const ballotNome = document.getElementById('ballotNome');
+  if (ballotNome && c.nome) ballotNome.textContent = c.nome;
 
   const heroTagNome = document.getElementById('heroTagNome');
   const heroTagCargo = document.getElementById('heroTagCargo');

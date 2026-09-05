@@ -164,6 +164,7 @@ window.RADAR_CONTENT = {
   contato: {
     coordenacaoGeral: "(61) 99674-2616",
     imprensa: "(61) 99165-0178",
+    email: "contato@danielradar70000.com.br",
     comite: "Comitê Central: Santa Maria - DF",
     cnpj: "68.504.295/0001-77",
     rodape: "ELEIÇÃO 2026 DANIEL RADAR - DEPUTADO DISTRITAL • CNPJ 68.504.295/0001-77 • AVANTE 70 • Distrito Federal • Todos os direitos reservados."
