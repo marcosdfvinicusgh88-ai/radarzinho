@@ -632,38 +632,21 @@ h2.section-title{
   .cta-band{ grid-template-columns:1fr; padding: 36px 26px; text-align:left; }
 }
 
-/* ---------- redirecionamentos de contato (WhatsApp / e-mail) ---------- */
-.contact-redirects{
-  margin-top: 32px;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.contact-redirect-card{
-  display:flex; align-items:center; gap:16px;
-  background: var(--paper-dim);
-  border: 1px solid var(--ink-line);
-  border-radius: var(--radius-m);
-  padding: 20px;
+/* ---------- "fale com a gente": card compacto, igual ao cta-band ---------- */
+.contato-card{
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius-l);
+  padding: 40px;
   text-align:left;
-  transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
 }
-.contact-redirect-card:hover{
-  transform: translateY(-4px);
-  border-color: var(--green-mid);
-  box-shadow: 0 14px 30px rgba(11,61,36,.12);
-}
-.contact-redirect-icon{
-  flex:none; width:46px; height:46px; border-radius:50%;
-  background: var(--green-deep); color: var(--white);
-  display:flex; align-items:center; justify-content:center;
-  transition: transform .25s var(--ease);
-}
-.contact-redirect-card:hover .contact-redirect-icon{ transform: scale(1.08) rotate(-6deg); }
-.contact-redirect-icon svg{ width:22px; height:22px; }
-.contact-redirect-card strong{ display:block; font-family: var(--f-display); font-size:16px; color: var(--ink); }
-.contact-redirect-card > span > span{ display:block; font-size:13px; color: var(--ink-45); margin-top:2px; }
-@media (max-width: 560px){ .contact-redirects{ grid-template-columns:1fr; } }
+.contato-card .eyebrow{ color: var(--signal); }
+.contato-card .eyebrow::before{ background: var(--signal); box-shadow: 0 0 0 4px rgba(255,255,255,.14); }
+.contato-card h2{ font-family: var(--f-display); font-size: 24px; margin-top:6px; }
+.contato-card p{ margin-top:10px; color: var(--on-ink-70); font-size:14.5px; max-width:48ch; }
+.contato-card-actions{ display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; }
+.contato-card-actions svg{ width:16px; height:16px; }
+@media (max-width: 480px){ .contato-card{ padding:28px 22px; } .contato-card-actions{ flex-direction:column; } }
 
 /* ============ footer ============ */
 .site-footer{
