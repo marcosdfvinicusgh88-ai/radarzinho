@@ -239,7 +239,7 @@ window.RADAR_CONTENT = {
   // redireciona para o canal oficial homologado pela campanha, conforme a
   // legislação eleitoral (doações identificadas, com CPF do doador).
   doacao: {
-    linkOficial: "https://www.doeaqui.asaas.com/danielradar70000",
+    linkOficial: "https://doe.la/daniel-radar",
     limiteInformativo: "Pessoas físicas podem doar até 10% dos seus rendimentos brutos do ano anterior, conforme a legislação eleitoral (Lei nº 9.504/1997).",
     textoIntro: "Sua doação ajuda a custear material de campanha, deslocamento e ações de rua da candidatura 70.000. Toda doação é identificada e registrada na prestação de contas oficial à Justiça Eleitoral."
   },
